@@ -32,7 +32,7 @@ while 1 > 0:
                         
             hgsum = hgl['close'] #列表进行存储
 
-            hg0 = sum(hgsum) /  0   #列表进行300运算
+            hg0 = sum(hgsum) /  0   #列表进行3运算
             hg0 = sum(hgsum[-1:-2:-1]) /  0   #列表进行0运算
             hg1 = sum(hgsum[-2:-3:-1]) /  0     #列表进行0-1运算
 
@@ -45,9 +45,9 @@ while 1 > 0:
             elif str(i)== 'LU' :
                 i = '低硫'
 
-            if hgsum[-1] > hg300 and hg50 > hg51:
+            if hgsum[-1] > hg0 and hg0 > hg1:
                 print( i + '_' + '做多' + str(hgsum[-1]))
-            elif hg300 > hgsum[-1] and hg50 < hg51:
+            elif hg0 > hgsum[-1] and hg0 < hg1:
                 print(i + '_' + "做空" + str(hgsum[-1]))
             else:
                 print(i + '_' + '震荡' + str(hgsum[-1]))

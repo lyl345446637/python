@@ -5,7 +5,7 @@ import datetime
 from email.mime.multipart import MIMEMultipart
 import smtplib
 from email.mime.text import MIMEText
-def yx(sd):#邮箱封装 
+def yx(sd):     
     today3 = datetime.datetime.now()
     msg_from = ''  # 发送方邮箱
     passwd = ''   #就是上面的授权码
@@ -34,14 +34,13 @@ def yx(sd):#邮箱封装
     s.sendmail(msg_from,to,msg.as_string())
     print("邮件发送成功")                                                       
 
-auth('账号','密码')
 '''
-    is_auth = is_auth()
-    print(is_auth) #是否连接上服务器
-    count = get_query_count()
-    print(count) #查看剩余获取条数
+is_auth = is_auth()
+print(is_auth) #是否连接上服务器
+count = get_query_count()
+print(count) #查看剩余获取条数
 '''
-
+auth('','')
 while 1 > 0:
     today2 = datetime.datetime.now()
     c = str(today2)[11:19]
@@ -82,29 +81,37 @@ while 1 > 0:
                 i = '低硫'
             
             if hgsum[-1] > hg50 > hg100 > hg150 > hg300 and hg50 > hg51:
-                print( i + '_' + '做多' + str(hgsum[-1]))
+                print( i + '_' + '做多'+ '_'  + str(hgsum[-1]) + '_' + c)
             elif hg300 > hg150 > hg100 > hg50 > hgsum[-1] and hg50 < hg51:
-                print(i + '_' + "做空" + str(hgsum[-1]))
+                print(i + '_' + "做空"+ '_'  + str(hgsum[-1]) + '_' + c)
             else:
-                print(i + '_' + '震荡' + str(hgsum[-1]))
+                print(i + '_' + '震荡'+ '_'  + str(hgsum[-1]) + '_' + c)
             
             sd = ''
             if hg50 > hg300:
                 if hg51 <= hg301:
-                    sd = "准备转-多"
+                    sd = i + '_'+ "准备_转多" + '_' + str(hgsum[-1])
                     yx(sd)
                 elif hgsum[-1] < hg50:
                     if hgsum[-2] > hg51:
-                        sd = "空震荡"
+                        sd = i + '_'+ "多_震荡" + '_' + str(hgsum[-1])
+                        yx(sd)
+                elif hgsum[-1] > hg50:
+                    if hgsum[-2] < hg51:
+                        sd = i + '_'+ "多_震荡_继续_做多" + '_' + str(hgsum[-1])
                         yx(sd)
             
             if hg50 < hg300:
-                if hg51 >= hg301:
-                    sd = "准备转-空"
+                if hg51 > hg301:
+                    sd = i + '_'+ "准备_转空" + '_' + str(hgsum[-1])
                     yx(sd)
                 elif hgsum[-1] > hg50:
                     if hgsum[-2] < hg51:
-                        sd = "空震荡"
+                        sd = i + '_'+ "空_震荡" + '_' + str(hgsum[-1])
+                        yx(sd)
+                elif hgsum[-1] < hg50:
+                    if hgsum[-2] > hg51:
+                        sd = i + '_'+ "空_震荡_继续_做空" + '_' + str(hgsum[-1])
                         yx(sd)
         time.sleep(60.01)
         break

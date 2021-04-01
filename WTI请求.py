@@ -7,9 +7,9 @@ import time
 import datetime
 def yx(sd):     
     today3 = datetime.datetime.now()
-    msg_from = '345446637@qq.com'  # 发送方邮箱
+    msg_from = ''  # 发送方邮箱
     passwd = ''   #就是上面的授权码
-    to = ['345446637@qq.com'] #接受方邮箱
+    to = [''] #接受方邮箱
 
     #设置邮件内容
     #MIMEMultipart类可以放任何内容
